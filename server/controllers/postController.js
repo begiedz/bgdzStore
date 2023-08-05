@@ -1,22 +1,37 @@
+// connection to MySQL
+const mysql = require('mysql');
+
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'bgdzStore',
+});
+
+const indexPage = (req, res) => {
+  res.json('Welcome to bgdzStore!');
+};
+
 const getPosts = (req, res) => {
-  res.send('Welcome to bgdzStore');
+  const q = 'SELECT * FROM store';
+  db.query(q, (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
 };
 
 const createPost = (req, res) => {
-  res.send('create a post');
+  // const q =
+  //   "INSERT INTO store (name, description, price) VALUES 'Mieszkanie', 'oddam mieszkanie za darmo','0'";
+  //   db.query(q, (err, data)=>{
+  //     if (err) return res.json(err);
+  //     return res.json(data)
+  //   })
+  res.json('create a post');
 };
 
-`GET /posts -> get all posts
-
-POST /posts/create -> post a post
-
-GET /posts/:id -> get specific post
-
-DELETE /posts/:id -> delete specific post
-
-PATCH /posts/:id -> update specific post`;
-
 module.exports = {
+  indexPage,
   getPosts,
   createPost,
 };

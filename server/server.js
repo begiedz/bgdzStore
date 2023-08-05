@@ -13,5 +13,5 @@ app.use('/', postRoutes);
 
 //server listening
 app.listen(3000, 'localhost', () => {
-  console.log(`App avaible on http://localhost:3000`);
+  console.log(`App available on http://localhost:3000`);
 });
