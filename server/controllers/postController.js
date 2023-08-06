@@ -21,13 +21,13 @@ const getPosts = (req, res) => {
 };
 
 const createPost = (req, res) => {
-  // const q =
-  //   "INSERT INTO store (name, description, price) VALUES 'Mieszkanie', 'oddam mieszkanie za darmo','0'";
-  //   db.query(q, (err, data)=>{
-  //     if (err) return res.json(err);
-  //     return res.json(data)
-  //   })
-  res.json('create a post');
+  const q = 'INSERT INTO store (`title`, `description`, `price`) VALUES (?)';
+  const values = ['test title', 'test description', '123'];
+
+  db.query(q, [values], (err, data) => {
+    if (err) return res.json(err);
+    return res.json('Post has been added');
+  });
 };
 
 module.exports = {
