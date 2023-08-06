@@ -22,7 +22,7 @@ const getPosts = (req, res) => {
 
 const createPost = (req, res) => {
   const q = 'INSERT INTO store (`title`, `description`, `price`) VALUES (?)';
-  const values = ['test title', 'test description', '123'];
+  const values = [req.body.title, req.body.description, req.body.price];
 
   db.query(q, [values], (err, data) => {
     if (err) return res.json(err);
